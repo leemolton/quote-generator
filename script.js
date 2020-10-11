@@ -2,7 +2,7 @@ const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
-const newquoteBtn = document.getElementById('new-quote');
+const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
 function showLoadingSpinner() {
@@ -20,13 +20,13 @@ function removeLoadingSpinner() {
 // Get Quote From API
 async function getQuote() {
     showLoadingSpinner();
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+    const proxyUrl = 'https://whispering-tor-04671.herokuapp.com/'
     const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
     try {
         const response = await fetch(proxyUrl + apiUrl);
         const data = await response.json();
         // If Author is blank, add 'Unknown'
-        if (data.quoteAuthor == '') {
+        if (data.quoteAuthor === '') {
             authorText.innerText = 'Unknown';
         } else {
             authorText.innerText = data.quoteAuthor;
@@ -38,7 +38,7 @@ async function getQuote() {
             quoteText.classList.remove('long-quote');
         }
         quoteText.innerText = data.quoteText;
-        // Stop Loader, Show QUote
+        // Stop Loader, Show Quote
         removeLoadingSpinner();
     } catch (error) {
         getQuote();
@@ -54,8 +54,9 @@ function tweetQuote() {
 }
 
 // Event Listeners
-newquoteBtn.addEventListener('click', getQuote);
+newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 
 // On Load
 getQuote();
+
