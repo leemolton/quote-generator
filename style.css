@@ -18,6 +18,14 @@ body {
     justify-content: center;
 }
 
+.header {
+    padding: 30px;
+    text-align: center;
+    background: #e5e9e8;
+    color: black;
+    font-size: 40px;
+  }
+
 .quote-container {
     width: auto;
     max-width: 900px;
